@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "tpModul04_103022330068": {
+      "commandName": "Project",
+      "sqlDebugging": false,
+      "nativeDebugging": false,
+      "remoteDebugEnabled": false
+    }
+  }
+}
