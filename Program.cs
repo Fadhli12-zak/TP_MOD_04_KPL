@@ -4,23 +4,29 @@ class MainProgram
     public static void Main(String[] args)
     {
         Console.WriteLine("pilih soal:(1/2) ");
-        int pilih = Console.Read();
-        if (pilih == 1)
+        string pilih = Console.ReadLine();
+        if (pilih == "1")
         {
             KodePos kodepos = new KodePos();
-            Console.WriteLine("Masukkan nama kelurahan: ");
-            string input = Console.ReadLine();
-            String search = kodepos.getKodePos(input);
-            if (search == null)
+            string input = null;
+            while (input != "exit")
             {
-                Console.WriteLine("Kelurahan tidak ditemukan");
+                Console.WriteLine("Masukkan nama kelurahan: ");
+                input = Console.ReadLine();
+                String search = kodepos.getKodePos(input);
+                if (search == null)
+                {
+                    Console.WriteLine("Kelurahan tidak ditemukan");
+                }
+                else
+                {
+                    Console.WriteLine($"Kode Pos {input} adalah {search}");
+                }
             }
-            else
-            {
-                Console.WriteLine($"Kode Pos {input} adalah {search}");
-            }
+          
         }
-        else { 
+        else 
+        { 
             DoorMachine door = new DoorMachine();
             door.doorMachine();
         }
@@ -55,12 +61,9 @@ class DoorMachine
         State state = State.TERKUNCI;
         string[] screenName = { "PINTU TERKUNCI","PINTU TERBUKA" };
         string command = null;
-        int i = 0;
         while (command != "EXIT")
         {
-            if (i > 0) {
-                Console.Write("Enter Command : ");
-            }
+            Console.Write("Enter Command : ");
             command = Console.ReadLine();
             switch (state)
             {
@@ -70,7 +73,8 @@ class DoorMachine
                         state = State.TERKUNCI;
                         Console.WriteLine(screenName[(int)state]);
                     }
-                    else if (command == "BUKA PINTU") { 
+                    else if (command == "BUKA PINTU")
+                    {
                         state = State.TERBUKA;
                         Console.WriteLine(screenName[(int)state]);
                     }
@@ -86,9 +90,8 @@ class DoorMachine
                         state = State.TERKUNCI;
                         Console.WriteLine(screenName[(int)state]);
                     }
-                        break;
+                    break;
             }
-            i++;
         }
        
     }
